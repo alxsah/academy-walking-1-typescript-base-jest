@@ -1,3 +1,8 @@
 export const fizzbuzz = (num: number) => {
-  return "1";
+  if (num === 1) {
+    return "1"; 
+  } else {
+    return "Fizz";
+    
+  }
 };
