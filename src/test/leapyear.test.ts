@@ -1,9 +1,11 @@
 import {isLeapYear} from "../main/leapyear";
 
 describe ("Leap Year", () => {
-  it("For 1582 should return false", () => {
-    expect(isLeapYear(1582)).toBe(false);
-  });
+  it.each([
+    [1582, false],
+  ])("for 1582 should return false", (input: number, expected: boolean) => {
+    expect(isLeapYear(input)).toBe(expected);
+  }) 
   it("For 1800 should return false", () => {
     expect(isLeapYear(1800)).toBe(false);
   });
@@ -15,5 +17,8 @@ describe ("Leap Year", () => {
   });
   it("For 2024 should return True", () => {
     expect(isLeapYear(2024)).toBe(true);
+  });
+  it("For 1900 should return True", () => {
+    expect(isLeapYear(1900)).toBe(false);
   });
 });
