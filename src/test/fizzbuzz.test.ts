@@ -10,7 +10,9 @@ describe('Fizzbuzz', () => {
     [6, "Fizz"],
     [7, "7"],
     [8, "8"],
-    [10, "Buzz"]
+    [9, "Fizz"],
+    [10, "Buzz"], 
+    [15, "FizzBuzz"] 
   ])("takes %i and returns %s", (input: number, expected: string) => {
     expect(fizzbuzz(input)).toBe(expected);
   });
