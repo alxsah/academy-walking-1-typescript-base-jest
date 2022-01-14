@@ -1,16 +1,12 @@
 import {fizzbuzz} from "../main/fizzbuzz";
 
 describe('Fizzbuzz', () => {
-  it("takes 1 and returns 1", () => {
-    expect(fizzbuzz(1)).toBe("1");
-  });
-  it("takes 2 and returns 2", () => {
-    expect(fizzbuzz(2)).toBe("2");
-  });
-  it("takes 3 and returns Fizz", () => {
-    expect(fizzbuzz(3)).toBe("Fizz");
-  });
-  it("takes 5 and returns Buzz", () => {
-    expect(fizzbuzz(5)).toBe("Buzz");
+  it.each([
+    [1, "1"],
+    [2, "2"],
+    [3, "Fizz"],
+    [5, "Buzz"]
+  ])("takes %i and returns %s", (input: number, expected: string) => {
+    expect(fizzbuzz(input)).toBe(expected);
   });
 });
