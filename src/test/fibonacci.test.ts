@@ -1,7 +1,11 @@
 import { returnFibonacci } from "../main/fibonacci";
 
 describe('returnFibonacci', () => {
-    it("given position n return the fibonacci number", () => {
-        expect(returnFibonacci(0)).toBe(0);
-    })     
-  });
+    it.each([
+      [0, 0],
+      [1, 1],
+      [2, 1]
+    ])('given position %i return %i as the fibonacci number', (position: number, fib: number) => {
+      expect(returnFibonacci(position)).toBe(fib);
+    });
+});
