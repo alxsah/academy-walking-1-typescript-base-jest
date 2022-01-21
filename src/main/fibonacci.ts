@@ -1,4 +1,4 @@
-export const returnFibonacci = (position: number) => {
-  if (position === 2 || position === 3) return position - 1;
-  return position;
+export const returnFibonacci = (position: number): number => {
+  if (position === 0 || position === 1) return position;
+  return returnFibonacci(position - 2) + returnFibonacci(position - 1);
 }
