@@ -1,4 +1,4 @@
-import { returnFibonacci } from "../main/fibonacci";
+import { returnFibonacci, fibonacciIterative } from "../main/fibonacci";
 
 describe('returnFibonacci', () => {
     it.each([
@@ -10,6 +10,6 @@ describe('returnFibonacci', () => {
       [5, 5],
       [6, 8]
     ])('given position %i return %i as the fibonacci number', (position: number, fib: number) => {
-      expect(returnFibonacci(position)).toBe(fib);
+      expect(fibonacciIterative(position)).toBe(fib);
     });
 });
