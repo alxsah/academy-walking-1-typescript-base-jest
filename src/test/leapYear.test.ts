@@ -8,6 +8,8 @@ describe('isLeapYear', () => {
     [1700, false],
     [2022, false],
     [1800, false],
+    [2000, true],
+    [2001, false]
   ])('should be %i for year %s', (year: number, result: boolean) => {
     expect(isLeapYear(year)).toBe(result);
   });
