@@ -1,13 +1,13 @@
 import { returnSumOfString } from "../main/stringCalculator"
 
 describe('returnSumOfString', () => {
-  it("for an empty string the ouput is 0", () => {
-      expect(returnSumOfString("")).toBe(0);
-  });
-  it("for a single number should return that number", () => {
-    expect(returnSumOfString("4")).toBe(4);
-  });
-  it("for another number should also return that number", () => {
-    expect(returnSumOfString("8")).toBe(8);
-  });
+    it.each([
+        ["", 0],
+        ["4", 4],
+        ["8", 8],
+        ["2,4", 6]
+
+    ])('for string %s the sum of number %i is returned', (numberString: string, numberValue: number) => {
+        expect(returnSumOfString(numberString)).toBe(numberValue);
+    })
 });
