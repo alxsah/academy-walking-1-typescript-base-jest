@@ -1,6 +1,7 @@
 export function romanNumberConvertor(number: number): string {
-    if (number === 4 ) {
-        return 'IV';
-    } 
-    return 'I'.repeat(number);
+    const romanMap: Map<number, string> = new Map();
+    romanMap.set(4, 'IV');
+    romanMap.set(5, 'V');
+
+    return romanMap.get(number) || 'I'.repeat(number);
 }
