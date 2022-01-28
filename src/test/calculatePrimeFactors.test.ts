@@ -5,7 +5,9 @@ describe('calculatePrimeFactors', () => {
     [1, []],
     [2, [2]],
     [3, [3]],
-    [4, [2, 2]]
+    [4, [2, 2]],
+    [5, [5]],
+    [6, [2, 3]]
   ])('for %i should return %s', (input, result) => {
     expect(calculatePrimeFactors(input)).toEqual(result);
   });
