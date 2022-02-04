@@ -29,6 +29,13 @@ describe('TicTacToe game', () => {
     const ticTacToeGame = new TicTacToeGame();
     let board = ticTacToeGame.newBoard();
     board = board.playMove(3);
-    expect(board.playMove(3)).toThrowError("Move not allowed");
-  });
+      expect(() => {
+        board.playMove(3);
+      }).toThrowError('Move not allowed');
+    });
+    it('A player with 3 X’s or 3 O’s in a row vertically wins')
+    const ticTacToeGame = new TicTacToeGame();
+    let board = ticTacToeGame.newBoard();
+    expect(board.playMove(0).playMove(3).playMove(6).getState()).toEqual(['x', '-', '-', 'x', '-', '-', 'x', '-', '-'])
+    expect(ticTacToeGame.hasWon()).toBe(true);
 });
