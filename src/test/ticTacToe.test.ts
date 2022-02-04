@@ -24,5 +24,11 @@ describe('TicTacToe game', () => {
     const ticTacToeGame = new TicTacToeGame();
     const board = ticTacToeGame.newBoard();
     expect(board.playMove(3).playMove(4).getState()).toEqual(['-', '-', '-', 'x', 'o', '-', '-', '-', '-'])
-  })
+  });
+  it('should not allow you to play on a played position', () => {
+    const ticTacToeGame = new TicTacToeGame();
+    let board = ticTacToeGame.newBoard();
+    board = board.playMove(3);
+    expect(board.playMove(3)).toThrowError("Move not allowed");
+  });
 });
