@@ -71,4 +71,17 @@ describe('TicTacToe game', () => {
     expect(board.getState()).toEqual(['x', 'x', 'x', '-', '-', '-', '-', 'o', 'o'])
     expect(ticTacToeGame.hasWon()).toBe(true);
   });
+  it('A player with 3 X’s or 3 o’s in a row diagonally wins', () => {
+    const ticTacToeGame = new TicTacToeGame();
+    let board = ticTacToeGame.start();
+    board = board
+      .playMove(0) // x first move
+      .playMove(2) // o first move
+      .playMove(4) // x
+      .playMove(7) // o
+      .playMove(8) // x wins
+
+    expect(board.getState()).toEqual(['x', '-', 'o', '', 'x', '-', '-', 'o', 'x'])
+    expect(ticTacToeGame.hasWon()).toBe(true);
+});
 });
