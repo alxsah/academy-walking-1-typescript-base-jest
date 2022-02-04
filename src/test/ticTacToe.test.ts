@@ -2,9 +2,9 @@ import { TicTacToeGame } from "../main/ticTacToe/ticTacToe";
 
 // Rules
 // X always goes first
-// Players alternate placing X’s and O’s on the board
+// Players alternate placing X' and O' on the board
 // Players cannot play on a played position
-// A player with 3 X’s or 3 O’s in a row (vertically, horizontally or diagonally) wins the game.
+// A player with 3 X' or 3 O' in a row (vertically, horizontally or diagonally) wins the game.
 // If all 9 squares are filled and neither player achieves 3 in a row, the game is a draw.
 
 describe('TicTacToe game', () => {
@@ -14,16 +14,19 @@ describe('TicTacToe game', () => {
     const expectedBoard = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     expect(board.getState()).toStrictEqual(expectedBoard);
   });
+
   it('x should always go first', () => {
     const ticTacToeGame = new TicTacToeGame();
     const board = ticTacToeGame.start();
     expect(board.playMove(3).getState()).toEqual(['-', '-', '-', 'x', '-', '-', '-', '-', '-']);
   });
+
   it('o should go after x', () => {
     const ticTacToeGame = new TicTacToeGame();
     const board = ticTacToeGame.start();
     expect(board.playMove(3).playMove(4).getState()).toEqual(['-', '-', '-', 'x', 'o', '-', '-', '-', '-'])
   });
+
   it('should not allow you to play on a played position', () => {
     const ticTacToeGame = new TicTacToeGame();
     let board = ticTacToeGame.start();
@@ -32,7 +35,8 @@ describe('TicTacToe game', () => {
         board.playMove(3);
       }).toThrowError('Move not allowed');
     });
-    it('A player with 3 X’s or 3 o’s in a row vertically wins', () => {
+
+    it('A player with 3 Xs or 3 os in a row vertically wins', () => {
       const ticTacToeGame = new TicTacToeGame();
       let board = ticTacToeGame.start();
       board = board
@@ -45,7 +49,8 @@ describe('TicTacToe game', () => {
       expect(board.getState()).toEqual(['x', 'o', 'o', 'x', '-', '-', 'x', '-', '-'])
       expect(ticTacToeGame.hasWon()).toBe(true);
     });
-  it('A player with 3 X’s or 3 o’s in a row vertically wins for a different row', () => {
+
+  it('A player with 3 Xs or 3 os in a row vertically wins for a different row', () => {
     const ticTacToeGame = new TicTacToeGame();
     let board = ticTacToeGame.start();
     board = board
@@ -58,7 +63,8 @@ describe('TicTacToe game', () => {
     expect(board.getState()).toEqual(['-', 'x', 'o', '-', 'x', '-', '-', 'x', 'o'])
     expect(ticTacToeGame.hasWon()).toBe(true);
   });
-  it('A player with 3 X’s or 3 o’s in a row horizontally wins', () => {
+
+  it('A player with 3 Xs or 3 os in a row horizontally wins', () => {
     const ticTacToeGame = new TicTacToeGame();
     let board = ticTacToeGame.start();
     board = board
@@ -71,7 +77,8 @@ describe('TicTacToe game', () => {
     expect(board.getState()).toEqual(['x', 'x', 'x', '-', '-', '-', '-', 'o', 'o'])
     expect(ticTacToeGame.hasWon()).toBe(true);
   });
-  it('A player with 3 X’s or 3 o’s in a row diagonally wins', () => {
+
+  it('A player with 3 Xs or 3 os in a row diagonally wins', () => {
     const ticTacToeGame = new TicTacToeGame();
     let board = ticTacToeGame.start();
     board = board
@@ -81,7 +88,25 @@ describe('TicTacToe game', () => {
       .playMove(7) // o
       .playMove(8) // x wins
 
-    expect(board.getState()).toEqual(['x', '-', 'o', '', 'x', '-', '-', 'o', 'x'])
+    expect(board.getState()).toEqual(['x', '-', 'o', '-', 'x', '-', '-', 'o', 'x'])
     expect(ticTacToeGame.hasWon()).toBe(true);
-});
+  });
+
+  it('If all 9 squares are filled without a win it is a draw', () => {
+    const ticTacToeGame = new TicTacToeGame();
+    let board = ticTacToeGame.start();
+    board = board
+      .playMove(0) // x first move
+      .playMove(1) // o first move
+      .playMove(2) // x
+      .playMove(3) // o
+      .playMove(5) // x
+      .playMove(4) // o
+      .playMove(6) // x
+      .playMove(8) // o
+      .playMove(7) // x [DRAW!]
+
+    expect(board.getState()).toEqual(['x', 'o', 'x', 'o', 'o', 'x', 'x', 'x', 'o'])
+    expect(ticTacToeGame.hasWon()).toBe(false);
+  });
 });

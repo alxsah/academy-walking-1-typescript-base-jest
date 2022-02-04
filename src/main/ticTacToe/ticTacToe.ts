@@ -13,6 +13,7 @@ export class TicTacToeGame {
     for (let i=0; i<3; i++) {
       if (hasWonVertically(state, i) || hasWonHorizontally(state, i)) return true;
     }
+    if (hasWonDiagonally(state)) return true;
     return false;
   }
 }
@@ -27,3 +28,14 @@ const hasWonHorizontally = (state: string[], startPosition: number) => {
   return state[startPosition] === state[startPosition + 1] && state[startPosition] === state[startPosition + 2];
 }
 
+const hasWonDiagonally = (state: string[]) => {
+  const winStates = [[0, 4, 8], [2, 4, 6]];
+  for (let winState of winStates) {
+    if (state[winState[0]] === state[winState[1]] && state[winState[0]] === state[winState[2]] && positionHasBeenPlayed(state[winState[0]])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const positionHasBeenPlayed = (position: string) => position === 'x' || position === 'o';
