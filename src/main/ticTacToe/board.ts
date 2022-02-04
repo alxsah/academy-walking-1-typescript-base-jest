@@ -6,6 +6,7 @@ export class Board {
   }
 
   playMove(number: number) {
+    this.state[number]='x';
     return this;
   }
 }

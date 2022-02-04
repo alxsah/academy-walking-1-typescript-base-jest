@@ -20,4 +20,9 @@ describe('TicTacToe game', () => {
     const board = ticTacToeGame.newBoard();
     expect(board.playMove(3).getState()).toEqual(['-', '-', '-', 'x', '-', '-', '-', '-', '-']);
   });
+  it('o should go after x', () => {
+    const ticTacToeGame = new TicTacToeGame();
+    const board = ticTacToeGame.newBoard();
+    expect(board.playMove(3).playMove(4).getState()).toEqual(['-', '-', '-', 'x', 'o', '-', '-', '-', '-'])
+  })
 });
