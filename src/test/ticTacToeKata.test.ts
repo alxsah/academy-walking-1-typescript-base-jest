@@ -41,4 +41,23 @@ describe("tic tac toe game", () => {
     expect(ticTacToe.winner()).toBe("X");
   })
 
+  it("Player wins when they have 3 symbols in a column vertically", () => {
+    const ticTacToe = new TicTacToeKataGame();
+    ticTacToe.play(0,0);
+    ticTacToe.play(0,1);
+    ticTacToe.play(1,0);
+    ticTacToe.play(1, 2);
+    ticTacToe.play(2,0);
+    expect(ticTacToe.winner()).toBe("X");
+  })
+
+  it("Player wins when they have 3 symbols diagonally", () => {
+    const ticTacToe = new TicTacToeKataGame();
+    ticTacToe.play(0,0);
+    ticTacToe.play(0,1);
+    ticTacToe.play(1,1);
+    ticTacToe.play(1, 2);
+    ticTacToe.play(2,2);
+    expect(ticTacToe.winner()).toBe("X");
+  })
 })
