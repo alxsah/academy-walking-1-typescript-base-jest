@@ -1,7 +1,7 @@
 export class TicTacToeKataGame {
 
   private ticTacToeBoard: string[][] = [[], [], []];
-
+  private currentPlayer: string = "X";
   constructor() {
     this.createBoard();
   }
@@ -14,8 +14,13 @@ export class TicTacToeKataGame {
     }
   }
 
+  getNextPlayer(){
+   if (this.currentPlayer === "X") return "O";
+   return "X";
+  }
   play(row: number, col: number) {
-    this.ticTacToeBoard[row][col] = "X";
+    this.ticTacToeBoard[row][col] = this.currentPlayer;
+    this.currentPlayer = this.getNextPlayer();
   }
 
   getBoardSymbolAt(row: number, col: number) {
