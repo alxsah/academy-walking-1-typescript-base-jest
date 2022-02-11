@@ -60,4 +60,23 @@ describe("tic tac toe game", () => {
     ticTacToe.play(2,2);
     expect(ticTacToe.winner()).toBe("X");
   })
+  it("Is draw if board is filled and no winner", () => {
+    const ticTacToe = new TicTacToeKataGame();
+    ticTacToe.play(0,0); // X
+    ticTacToe.play(0,1); // O
+    ticTacToe.play(0,2); // X
+    ticTacToe.play(1,0); // O
+    ticTacToe.play(1,2); // X
+    ticTacToe.play(1,1); // O
+    ticTacToe.play(2,0); // X
+    ticTacToe.play(2,2); // O
+    ticTacToe.play(2,1); // X
+    expect(ticTacToe.winner()).toBe("-");
+  })
+  it("Player cannot play outside the board", () => {
+    const ticTacToe = new TicTacToeKataGame();
+    expect(() => {
+      ticTacToe.play(1,9)
+    }).toThrowError("Cannot play outside the board");
+  })
 })

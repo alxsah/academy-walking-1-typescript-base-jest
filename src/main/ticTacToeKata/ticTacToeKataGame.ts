@@ -35,6 +35,10 @@ export class TicTacToeKataGame {
          return PlayerSymbols.X;
        if(this.checkRowForPlayer(position,PlayerSymbols.O) || this.checkColForPlayer(position,PlayerSymbols.X))
          return PlayerSymbols.O;
+       if(this.checkdiagForPlayer(PlayerSymbols.X))
+         return PlayerSymbols.X;
+       if(this.checkdiagForPlayer(PlayerSymbols.O))
+         return PlayerSymbols.O;  
     }
     return PlayerSymbols.EMPTY;
   }
@@ -45,5 +49,8 @@ export class TicTacToeKataGame {
 
   checkColForPlayer(col: number, player: string){
     return this.ticTacToeBoard[0][col] === player && this.ticTacToeBoard[1][col] === player &&  this.ticTacToeBoard[2][col] === player;
+  }
+  checkdiagForPlayer(player:string){
+    return this.ticTacToeBoard[0][0] === player && this.ticTacToeBoard[1][1] === player &&  this.ticTacToeBoard[2][2] === player || this.ticTacToeBoard[2][0] === player && this.ticTacToeBoard[1][1] === player &&  this.ticTacToeBoard[0][2] === player ;
   }
 }
